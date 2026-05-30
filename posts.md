@@ -9,7 +9,7 @@ permalink: /posts/
   <header class="page-heading">
     <p class="section-label">Writing</p>
     <h1>文章</h1>
-    <p class="lead">按时间倒序。这里应该像日志，而不是作品集。</p>
+    <p class="lead">按时间倒序整理最近的开发记录和技术笔记。</p>
   </header>
 
   <div class="archive-list">

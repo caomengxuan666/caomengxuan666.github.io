@@ -10,7 +10,7 @@ permalink: /about/
     <header>
       <p class="article-meta">About</p>
       <h1>关于</h1>
-      <p class="lead">这个站点先作为技术博客使用，不当简历页。</p>
+      <p class="lead">Linux C++ learner，主要记录代码、发布和工程问题。</p>
     </header>
 
     <div class="article-body">
@@ -21,7 +21,7 @@ permalink: /about/
       </p>
 
       <p>
-        这里主要记录正在写的仓库、做过的验证、踩到的问题和设计取舍。现在最主要的项目是
+        这里主要记录正在写的仓库、做过的验证、踩到的问题和设计取舍。最近写得最多的是
         <a href="https://github.com/caomengxuan666/cxxmcp">cxxmcp</a>，
         它的项目文档在
         <a href="https://caomengxuan666.github.io/cxxmcp/">cxxmcp GitHub Pages</a>。
