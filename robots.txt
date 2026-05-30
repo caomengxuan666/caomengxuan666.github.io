@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://caomengxuan666.github.io/sitemap.xml
