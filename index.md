@@ -67,6 +67,10 @@ description: cxxmcp、Windows/Linux 工具、Redis 兼容数据库和 C++/Rust �
             <span>项目索引</span>
           </li>
           <li>
+            <a href="{{ '/contributions/' | relative_url }}">Issues/PRs</a>
+            <span>问题和 PR</span>
+          </li>
+          <li>
             <a href="{{ '/tags/' | relative_url }}">Tags</a>
             <span>文章标签</span>
           </li>

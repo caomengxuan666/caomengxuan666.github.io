@@ -607,19 +607,22 @@ h3 {
 }
 
 .archive-list,
-.project-detail-list {
+.project-detail-list,
+.contribution-list {
   display: grid;
   gap: 16px;
 }
 
 .archive-list article,
-.project-detail {
+.project-detail,
+.contribution-list article {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface);
 }
 
-.archive-list article {
+.archive-list article,
+.contribution-list article {
   padding: 24px;
 }
 
@@ -641,8 +644,14 @@ h3 {
 .archive-list p,
 .project-detail p,
 .project-detail li,
+.contribution-list p,
 .topic-grid p {
   color: var(--muted);
+}
+
+.contribution-list h2 {
+  margin-bottom: 10px;
+  font-size: 1.45rem;
 }
 
 .project-detail {
