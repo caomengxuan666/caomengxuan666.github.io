@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'zh-CN' }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% seo %}
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }} RSS" href="{{ '/feed.xml' | relative_url }}" />
+    <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="{{ '/' | relative_url }}" aria-label="回到首页">CMX</a>
+      <nav class="nav" aria-label="主导航">
+        <a href="{{ '/posts/' | relative_url }}">文章</a>
+        <a href="{{ '/projects/' | relative_url }}">项目</a>
+        <a href="{{ '/topics/' | relative_url }}">主题</a>
+        <a href="https://caomengxuan666.github.io/cxxmcp/">cxxmcp docs</a>
+        <a href="https://github.com/caomengxuan666">GitHub</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="切换主题" title="切换主题">
+        <span aria-hidden="true">◐</span>
+      </button>
+    </header>
+
+    {{ content }}
+
+    <footer class="footer">
+      <p>© <span id="year">2026</span> 曹梦轩 · GitHub Pages</p>
+      <div>
+        <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+        <a href="{{ '/sitemap.xml' | relative_url }}">Sitemap</a>
+      </div>
+    </footer>
+
+    <script src="{{ '/script.js' | relative_url }}"></script>
+  </body>
+</html>

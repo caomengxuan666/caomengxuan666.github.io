@@ -1,0 +1,50 @@
+- name: cxxmcp
+  language: C++17
+  repo: https://github.com/caomengxuan666/cxxmcp
+  docs: https://caomengxuan666.github.io/cxxmcp/
+  status: 当前重点
+  description: C++17 的 Model Context Protocol SDK，覆盖 server/client、stdio、process stdio 和 Streamable HTTP，并把一致性测试结果写进文档。
+  notes:
+    - Server conformance 109/110，client conformance 447/447。
+    - 有独立 Pages 文档、release gates、package consumption 和 conformance evidence。
+- name: WinuxCmd
+  language: C++
+  repo: https://github.com/caomengxuan666/WinuxCmd
+  docs: https://dl.caomengxuan666.com/
+  status: pinned
+  description: 原生 Windows 的 Linux 风格命令集合，目标是让常见管道和命令习惯不用 WSL 也能跑起来。
+  notes:
+    - README 强调单文件体积小、启动快、Windows 命令与 Linux 风格过滤器互通。
+    - 这是账号里 star 最多的项目。
+- name: AstraDB
+  language: C++23
+  repo: https://github.com/caomengxuan666/AstraDB
+  docs:
+  status: pinned
+  description: Redis 兼容数据库实验，围绕 RESP、worker 架构、持久化、JSON/vector 能力和集群支持推进。
+  notes:
+    - README 里列出 RESP2/RESP3、AOF/RDB、RocksDB、Prometheus、ACL 等模块。
+- name: libgossip
+  language: C++17
+  repo: https://github.com/caomengxuan666/libgossip
+  docs:
+  status: pinned
+  description: 面向去中心化集群的 gossip/SWIM 成员管理库，关注节点发现、故障检测和元数据传播。
+  notes:
+    - 提供 C API 和 Python bindings，和 AstraDB 的集群方向能连起来看。
+- name: ferryllm
+  language: Rust
+  repo: https://github.com/caomengxuan666/ferryllm
+  docs: https://docs.rs/ferryllm
+  status: pinned
+  description: Rust 写的 LLM 协议中间层，把 OpenAI、Anthropic、Claude Code 和兼容后端归一到内部表示。
+  notes:
+    - 重点不是“套壳代理”，而是减少 client protocol 到 provider protocol 的 N x M 适配。
+- name: resp-cli
+  language: Rust
+  repo: https://github.com/caomengxuan666/resp-cli
+  docs:
+  status: pinned
+  description: Redis/Dragonfly/KeyDB 兼容命令行客户端，支持 REPL、补全、pipeline、pub/sub、TLS 和 cluster。
+  notes:
+    - 和 AstraDB 一样属于 Redis 生态方向，但更偏客户端工具。

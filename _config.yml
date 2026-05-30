@@ -1,0 +1,29 @@
+title: 曹梦轩
+description: 记录 cxxmcp、Windows/Linux 工具、Redis 兼容数据库和一些 C++/Rust 基础设施实验。
+url: "https://caomengxuan666.github.io"
+baseurl: ""
+lang: zh-CN
+timezone: Asia/Shanghai
+
+author:
+  name: 曹梦轩
+  github: caomengxuan666
+
+permalink: /posts/:year/:month/:day/:slug/
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

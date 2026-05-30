@@ -1,21 +1,21 @@
 # caomengxuan666.github.io
 
-曹梦轩的个人博客，面向 GitHub Pages 的纯静态站点。
+曹梦轩的个人技术博客，使用 Jekyll 和 GitHub Pages 发布。
 
 ## 本地预览
 
-直接打开 `index.html`，或在仓库根目录启动一个静态服务器：
-
 ```powershell
-python -m http.server 8000
+bundle install
+bundle exec jekyll serve
 ```
 
-然后访问 `http://localhost:8000`。
+然后访问 `http://localhost:4000`。
 
-## 发布到 GitHub Pages
+## 结构
 
-1. 在 GitHub 创建仓库 `caomengxuan666.github.io`。
-2. 把本地仓库推送到 GitHub。
-3. 在仓库的 `Settings -> Pages` 中选择 GitHub Actions 作为发布来源。
+- `_posts/`: Markdown 文章，文件名使用 `YYYY-MM-DD-slug.md`
+- `_data/projects.yml`: 首页和项目页的数据源
+- `_layouts/`: Jekyll 页面模板
+- `topics/`: 主题索引页
 
-仓库里已经包含 `.github/workflows/pages.yml`，推送 `main` 分支后会自动部署。
+推送 `main` 分支后，GitHub Actions 会构建并发布到 GitHub Pages。
