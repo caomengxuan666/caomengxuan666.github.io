@@ -5,14 +5,17 @@ description: cxxmcp、Windows/Linux 工具、Redis 兼容数据库和 C++/Rust �
 ---
 
 <main class="blog-shell">
-  <header class="blog-intro">
+  <header class="blog-hero">
     <p class="eyebrow">caomengxuan666</p>
     <h1>曹梦轩的博客</h1>
-    <p>
-      开发日志和技术笔记。最近主要写
-      <a href="https://github.com/caomengxuan666/cxxmcp">cxxmcp</a>
-      和 WinuxCmd，文章尽量从提交、release 和实际问题出发。
+    <p class="lede">
+      开发日志、issue 复盘和发布记录。最近主要写 cxxmcp、WinuxCmd、MCP conformance 和 C++/Rust 工程问题。
     </p>
+    <div class="hero-actions">
+      <a class="button primary" href="{{ '/posts/' | relative_url }}">读文章</a>
+      <a class="button" href="{{ '/contributions/' | relative_url }}">Issues/PRs</a>
+      <a class="button" href="{{ '/publish/' | relative_url }}">发布文章</a>
+    </div>
   </header>
 
   <div class="blog-layout">
@@ -77,6 +80,10 @@ description: cxxmcp、Windows/Linux 工具、Redis 兼容数据库和 C++/Rust �
           <li>
             <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
             <span>订阅</span>
+          </li>
+          <li>
+            <a href="{{ '/publish/' | relative_url }}">Publish</a>
+            <span>写文章窗口</span>
           </li>
         </ul>
       </section>

@@ -1,0 +1,107 @@
+name: Blog post from issue
+
+on:
+  issues:
+    types:
+      - opened
+      - labeled
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: Issue number to convert
+        required: true
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  create-pr:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      contains(github.event.issue.labels.*.name, 'blog-post')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create blog post PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const issueNumber = context.eventName === "workflow_dispatch"
+              ? Number(core.getInput("issue_number"))
+              : context.payload.issue.number;
+
+            const { data: issue } = await github.rest.issues.get({
+              owner, repo, issue_number: issueNumber
+            });
+
+            function section(name) {
+              const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+              const match = issue.body.match(new RegExp(`### ${escaped}\\s+([\\s\\S]*?)(?=\\n### |$)`, "i"));
+              return match ? match[1].trim() : "";
+            }
+
+            const title = section("Title").replace(/^_No response_$/i, "").trim();
+            const slug = section("Slug").replace(/^_No response_$/i, "").trim();
+            const tags = section("Tags")
+              .replace(/^_No response_$/i, "")
+              .split(",")
+              .map((tag) => tag.trim())
+              .filter(Boolean);
+            const sources = section("Sources").replace(/^_No response_$/i, "").trim();
+            const body = section("Draft body").replace(/^_No response_$/i, "").trim();
+
+            if (!title || !slug || !body || !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug)) {
+              core.setFailed("Issue must include Title, Slug, and Draft body. Slug must use lowercase letters, numbers, and hyphens.");
+              return;
+            }
+
+            const today = new Date().toISOString().slice(0, 10);
+            const path = `_posts/${today}-${slug}.md`;
+            const yamlTitle = title.replaceAll("\\", "\\\\").replaceAll('"', '\\"');
+            const description = body.split(/\n+/).find((line) => line.trim())?.slice(0, 160) || title;
+            const yamlDescription = description.replaceAll("\\", "\\\\").replaceAll('"', '\\"');
+            const sourceBlock = sources
+              ? `\n\n## Sources\n\n${sources.split(/\n+/).map((line) => `- ${line.trim()}`).join("\n")}\n`
+              : "\n";
+            const content = `---\ntitle: "${yamlTitle}"\ndescription: "${yamlDescription}"\ndate: ${today}\nupdated: ${today}\ntags: [${tags.join(", ")}]\n---\n\n${body}${sourceBlock}`;
+
+            const { data: ref } = await github.rest.git.getRef({
+              owner, repo, ref: "heads/main"
+            });
+            const branch = `blog-post-${issueNumber}-${slug}`;
+
+            try {
+              await github.rest.git.createRef({
+                owner, repo, ref: `refs/heads/${branch}`, sha: ref.object.sha
+              });
+            } catch (error) {
+              if (error.status !== 422) throw error;
+            }
+
+            await github.rest.repos.createOrUpdateFileContents({
+              owner,
+              repo,
+              path,
+              message: `Add blog post: ${title}`,
+              content: Buffer.from(content, "utf8").toString("base64"),
+              branch
+            });
+
+            const { data: pr } = await github.rest.pulls.create({
+              owner,
+              repo,
+              title: `Add blog post: ${title}`,
+              head: branch,
+              base: "main",
+              body: `Generated from #${issueNumber}.\n\nReview the generated Markdown before merging.`
+            });
+
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: issueNumber,
+              body: `Created draft PR: ${pr.html_url}`
+            });
