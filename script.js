@@ -78,7 +78,7 @@ if (dateInput && !dateInput.value) {
 composer?.addEventListener("submit", (event) => {
   event.preventDefault();
   const post = buildPostMarkdown(composer);
-  output.value = post.markdown;
+  output.textContent = post.markdown;
   if (pathPreview) {
     pathPreview.textContent = post.filename;
   }
@@ -101,8 +101,8 @@ composer?.addEventListener("input", () => {
 });
 
 copyPost?.addEventListener("click", async () => {
-  if (!output?.value) return;
-  await navigator.clipboard.writeText(output.value);
+  if (!output?.textContent) return;
+  await navigator.clipboard.writeText(output.textContent);
   copyPost.textContent = "已复制";
   setTimeout(() => {
     copyPost.textContent = "复制";

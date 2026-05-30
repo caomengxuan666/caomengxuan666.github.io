@@ -51,30 +51,30 @@ permalink: /publish/
 
       <form class="post-composer" id="post-composer">
         <div class="field-grid">
-          <label>
-            标题
+          <label class="meta-field">
+            <span>标题</span>
             <input name="title" required placeholder="cxxmcp v1.1.2：release gates 先要能留下证据" />
           </label>
-          <label>
-            Slug
+          <label class="meta-field">
+            <span>Slug</span>
             <input name="slug" required placeholder="cxxmcp-release-gates" pattern="[a-z0-9-]+" />
           </label>
-          <label>
-            日期
+          <label class="meta-field">
+            <span>日期</span>
             <input name="date" type="date" required />
           </label>
-          <label>
-            标签
+          <label class="meta-field">
+            <span>标签</span>
             <input name="tags" placeholder="cxxmcp, ci, release" />
           </label>
         </div>
 
-        <label>
-          摘要
+        <label class="editor-field small">
+          <span>摘要</span>
           <textarea name="description" rows="3" placeholder="一句话说明这篇文章来自哪个提交、issue 或 release。"></textarea>
         </label>
-        <label>
-          正文
+        <label class="editor-field">
+          <span>正文 Markdown</span>
           <textarea name="body" rows="13" placeholder="背景&#10;&#10;改动&#10;&#10;验证&#10;&#10;遗留问题"></textarea>
         </label>
 
@@ -85,10 +85,13 @@ permalink: /publish/
         </div>
       </form>
 
-      <label class="output-console">
-        <span>Generated Markdown</span>
-        <textarea id="post-output" rows="17" readonly spellcheck="false"></textarea>
-      </label>
+      <section class="output-console" aria-label="生成的 Markdown">
+        <div class="console-bar">
+          <span>Generated Markdown</span>
+          <code>_posts/*.md</code>
+        </div>
+        <pre><code id="post-output">点击“生成 Markdown”后，这里会显示完整文章文件。</code></pre>
+      </section>
     </section>
   </div>
 </main>

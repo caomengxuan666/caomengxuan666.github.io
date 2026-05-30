@@ -1100,8 +1100,7 @@ h3 {
   gap: 14px;
 }
 
-.post-composer label,
-.output-console {
+.post-composer label {
   display: grid;
   gap: 7px;
   color: var(--muted);
@@ -1109,30 +1108,77 @@ h3 {
   font-weight: 750;
 }
 
-.post-composer input,
-.post-composer textarea,
-.output-console textarea {
-  width: 100%;
+.meta-field,
+.editor-field {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--bg);
-  color: var(--ink);
+}
+
+.meta-field {
+  grid-template-columns: 88px minmax(0, 1fr);
+  align-items: center;
+  gap: 0;
+  min-height: 46px;
+  overflow: hidden;
+}
+
+.meta-field span,
+.editor-field span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.meta-field span {
+  display: grid;
+  height: 100%;
+  place-items: center start;
+  padding-left: 12px;
+  border-right: 1px solid var(--line);
+  background: var(--surface-soft);
+}
+
+.editor-field {
+  overflow: hidden;
+  gap: 0;
+}
+
+.editor-field span {
+  display: block;
   padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-soft);
+}
+
+.post-composer input,
+.post-composer textarea {
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  padding: 11px 12px;
   font: inherit;
 }
 
 .post-composer input:focus,
-.post-composer textarea:focus,
-.output-console textarea:focus {
-  outline: 2px solid color-mix(in srgb, var(--accent) 24%, transparent);
-  border-color: var(--accent);
+.post-composer textarea:focus {
+  outline: 0;
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--accent) 24%, transparent);
 }
 
-.post-composer textarea,
-.output-console textarea {
+.post-composer textarea {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
   font-size: 0.9rem;
   line-height: 1.55;
+}
+
+.editor-field:not(.small) textarea {
+  min-height: 340px;
+  resize: vertical;
 }
 
 .composer-actions {
@@ -1142,17 +1188,52 @@ h3 {
 }
 
 .output-console {
-  padding: 0 20px 20px;
+  margin: 0 20px 20px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #0f172a;
 }
 
-.output-console span {
-  color: var(--muted);
+.console-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: #111827;
+}
+
+.console-bar span {
+  color: #cbd5e1;
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
-.output-console textarea {
+.console-bar code {
+  color: #67e8f9;
+  font-size: 0.78rem;
+}
+
+.output-console pre {
   min-height: 340px;
-  background: color-mix(in srgb, var(--bg) 70%, #000 2%);
+  max-height: 560px;
+  margin: 0;
+  overflow: auto;
+  border: 0;
+  border-radius: 0;
+  background: #0f172a;
+  padding: 16px;
+}
+
+.output-console code {
+  color: #e5e7eb;
+  white-space: pre;
+  font-size: 0.9rem;
+  line-height: 1.55;
 }
 
 @media (max-width: 900px) {
