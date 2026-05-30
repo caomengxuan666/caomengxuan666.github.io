@@ -50,6 +50,14 @@ tags: [cxxmcp, ci, release]
         <code>Blog post from issue</code> workflow，自动创建一条包含新文章文件的 PR。
         AI/MCP 工具也可以直接开这种 issue，把文章素材交给 workflow 处理。
       </p>
+
+      <h2>MCP 工具</h2>
+      <p>
+        独立实现放在
+        <a href="https://github.com/caomengxuan666/cmx-blog-mcp">cmx-blog-mcp</a>：
+        用 cxxmcp 暴露生成 Markdown、校验文章、创建博客 PR 三个工具。它只接受
+        <code>blog-post/*</code> 分支，不直接推 <code>main</code>。
+      </p>
     </div>
   </article>
 </main>
