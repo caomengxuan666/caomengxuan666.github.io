@@ -1,0 +1,12 @@
+- name: cxxmcp
+  url: /topics/cxxmcp/
+  description: MCP SDK、transport、conformance、package consumption。
+- name: Windows/Linux tools
+  url: /projects/
+  description: WinuxCmd、winuxsh，以及跨 shell 工作流。
+- name: Redis ecosystem
+  url: /projects/
+  description: AstraDB、resp-cli、libgossip 相关实验。
+- name: LLM gateways
+  url: /projects/
+  description: ferryllm 和协议转换层。

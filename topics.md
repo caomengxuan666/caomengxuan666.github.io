@@ -9,21 +9,15 @@ permalink: /topics/
   <header class="page-heading">
     <p class="section-label">Topics</p>
     <h1>主题</h1>
-    <p class="lead">目前先按真实项目线索收束，后续文章多了再拆更细。</p>
+    <p class="lead">主题是阅读入口，不是技能清单。文章多起来之后，这里会继续拆细。</p>
   </header>
 
   <div class="topic-grid">
-    <a href="{{ '/topics/cxxmcp/' | relative_url }}">
-      <span>cxxmcp</span>
-      <p>MCP SDK、transport、conformance、package consumption。</p>
+    {% for topic in site.data.topics %}
+    <a href="{{ topic.url | relative_url }}">
+      <span>{{ topic.name }}</span>
+      <p>{{ topic.description }}</p>
     </a>
-    <a href="{{ '/projects/' | relative_url }}">
-      <span>Windows/Linux tools</span>
-      <p>WinuxCmd、winuxsh，以及跨 shell 工作流。</p>
-    </a>
-    <a href="{{ '/projects/' | relative_url }}">
-      <span>Redis ecosystem</span>
-      <p>AstraDB、resp-cli、libgossip 相关实验。</p>
-    </a>
+    {% endfor %}
   </div>
 </main>
