@@ -962,49 +962,156 @@ h3 {
   scroll-margin-top: 90px;
 }
 
-.publish-page {
-  max-width: 980px;
+.publish-shell {
+  width: min(1120px, calc(100% - 48px));
   margin: 0 auto;
-  padding: 72px 6vw;
+  padding: 48px 0 72px;
 }
 
-.composer-panel {
+.publish-hero {
   display: grid;
-  gap: 20px;
-  margin-top: 24px;
-  padding: 22px;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 360px);
+  gap: 24px;
+  align-items: end;
+  padding: 42px 0 30px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 28px;
+}
+
+.publish-hero h1 {
+  margin: 8px 0 12px;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.08;
+}
+
+.publish-hero p {
+  max-width: 760px;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.publish-status {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  padding: 16px;
+}
+
+.publish-status span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.publish-status code {
+  color: var(--accent-strong);
+  overflow-wrap: anywhere;
+}
+
+.publish-grid {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.publish-guide {
+  display: grid;
+  gap: 14px;
+  position: sticky;
+  top: 84px;
+}
+
+.publish-guide section,
+.composer-window {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--panel);
 }
 
-.composer-panel.compact {
+.publish-guide section {
+  padding: 18px;
+}
+
+.publish-guide h2 {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.publish-guide ol {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.publish-guide a {
   display: block;
+  padding: 7px 0;
+  color: var(--accent-strong);
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.composer-window {
+  overflow: hidden;
+}
+
+.window-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-soft);
+}
+
+.window-bar h2 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.window-bar p {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.window-bar span {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .post-composer {
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+}
+
+.field-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 
 .post-composer label,
-.output-label {
+.output-console {
   display: grid;
-  gap: 6px;
+  gap: 7px;
   color: var(--muted);
-  font-size: 0.92rem;
-  font-weight: 700;
-}
-
-.post-composer label:nth-last-of-type(-n + 2),
-.output-label {
-  grid-column: 1 / -1;
+  font-size: 0.9rem;
+  font-weight: 750;
 }
 
 .post-composer input,
 .post-composer textarea,
-.output-label textarea {
+.output-console textarea {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -1014,17 +1121,38 @@ h3 {
   font: inherit;
 }
 
+.post-composer input:focus,
+.post-composer textarea:focus,
+.output-console textarea:focus {
+  outline: 2px solid color-mix(in srgb, var(--accent) 24%, transparent);
+  border-color: var(--accent);
+}
+
 .post-composer textarea,
-.output-label textarea {
+.output-console textarea {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
 }
 
 .composer-actions {
-  grid-column: 1 / -1;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.output-console {
+  padding: 0 20px 20px;
+}
+
+.output-console span {
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.output-console textarea {
+  min-height: 340px;
+  background: color-mix(in srgb, var(--bg) 70%, #000 2%);
 }
 
 @media (max-width: 900px) {
@@ -1039,5 +1167,20 @@ h3 {
 
   .post-composer {
     grid-template-columns: 1fr;
+  }
+
+  .publish-shell {
+    width: min(100% - 32px, 1120px);
+    padding-top: 30px;
+  }
+
+  .publish-hero,
+  .publish-grid,
+  .field-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .publish-guide {
+    position: static;
   }
 }

@@ -46,6 +46,7 @@ const composer = document.querySelector("#post-composer");
 const output = document.querySelector("#post-output");
 const copyPost = document.querySelector("#copy-post");
 const githubNewFile = document.querySelector("#github-new-file");
+const pathPreview = document.querySelector("#post-path-preview");
 
 function yamlString(value) {
   return `"${value.replaceAll("\\", "\\\\").replaceAll('"', '\\"')}"`;
@@ -78,12 +79,24 @@ composer?.addEventListener("submit", (event) => {
   event.preventDefault();
   const post = buildPostMarkdown(composer);
   output.value = post.markdown;
+  if (pathPreview) {
+    pathPreview.textContent = post.filename;
+  }
   if (githubNewFile) {
     const params = new URLSearchParams({
       filename: post.filename,
       value: post.markdown,
     });
     githubNewFile.href = `https://github.com/caomengxuan666/caomengxuan666.github.io/new/main?${params.toString()}`;
+  }
+});
+
+composer?.addEventListener("input", () => {
+  const data = new FormData(composer);
+  const date = String(data.get("date") || "YYYY-MM-DD").trim() || "YYYY-MM-DD";
+  const slug = String(data.get("slug") || "slug").trim() || "slug";
+  if (pathPreview) {
+    pathPreview.textContent = `_posts/${date}-${slug}.md`;
   }
 });
 
